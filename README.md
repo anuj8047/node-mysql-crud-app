@@ -43,7 +43,7 @@ The Node.js MySQL CRUD Application is a dynamic and versatile project that demon
 
 1. Clone this repository to your local machine:
 ```shell
-git clone https://github.com/your-username/node-mysql-crud-app.git
+git clone https://github.com/anuj8047/node-mysql-crud-app.git
 ```
 
 Navigate to the project directory:

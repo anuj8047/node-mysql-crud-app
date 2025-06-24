@@ -5,7 +5,38 @@
 </h1>
 <div class="container">
 <div class="row mt-5">
-    <div class="col-md-7">
+    <div class="col-md-12">
+		<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#insertModal">
+		  Insert
+		</button>
+		<div class="modal fade" id="insertModal" tabindex="-1" aria-labelledby="insertModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h5 class="modal-title" id="insertModalLabel">Insert Customer</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			  </div>
+			  <div class="modal-body">
+				<form action="/add" method="post"  enctype="multipart/form-data">
+				  <div class="mb-3">
+					<input type="text" name="name" placeholder="Name" class="form-control" required>
+				  </div>
+				  <div class="mb-3">
+					<input type="text" name="address" placeholder="Address" class="form-control" required>
+				  </div>
+				  <div class="mb-3">
+					<input type="text" name="phone" placeholder="Phone" class="form-control" required>
+				  </div>
+				   <div class="mb-3">
+					<input type="file" name="image" class="form-control" required>
+				  </div>
+				  <button type="submit" class="btn btn-primary">Save Customer</button>
+				</form>
+			  </div>
+			</div>
+		  </div>
+		</div>
+
         <table class="table table-bordered table-hover">
             <thead>
                 <tr>
@@ -13,6 +44,7 @@
                     <th>Name</th>
                     <th>Address</th>
                     <th>Phone</th>
+                    <th>User Image</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -24,6 +56,13 @@
                             <td><%= data[i].name %></td>
                             <td><%= data[i].address %></td>
                             <td><%= data[i].phone %></td>
+                           <td>
+							  <% if (data[i].image) { %>
+								<img src="/images/<%= data[i].image %>" width="100">
+							  <% } else { %>
+								No Image
+							  <% } %>
+							</td>
                             <td>
                                 <a href="/delete/<%= data[i].id %>" class="btn btn-danger">Delete</a>
                                 <a href="/update/<%= data[i].id %>" class="btn btn-info">Update</a>
@@ -34,26 +73,8 @@
             </tbody>
         </table>
     </div>
-    <div class="col-md-5">
-        <div class="card">
-            <div class="card-body">
-                <form action="/add" method="post">
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Name" class="form-control" >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="address" placeholder="Address" class="form-control" >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="phone" placeholder="Phone" class="form-control" >
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                        Save Customer
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
+
+
 </div>
 </div>
 <%- include('partials/_footer'); -%>

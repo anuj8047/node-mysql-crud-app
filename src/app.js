@@ -3,7 +3,11 @@ const morgan = require("morgan");
 const mysql = require("mysql");
 const myConnection = require("express-myconnection");
 const path = require('path');
+
 const app = express();
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Serve static files from the "public" folder
 require('dotenv').config();
 // learning pull request
 // To get the database password from the .env file
@@ -22,7 +26,7 @@ app.use(morgan('dev'));
 app.use(myConnection(mysql, {
     host: 'localhost',
     user: 'root',
-    password: PASS,
+    password: '',
     port: '3306',
     database: 'crudnodejsmysql'
 }, 'single'));

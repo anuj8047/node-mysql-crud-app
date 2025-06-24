@@ -1,0 +1,11 @@
+nav.navbar.navbar-dark.bg-dark {
+    place-content: center;
+}
+.h1, h1 {
+    font-size: 2.5rem;
+    place-self: center;
+}
+button.btn.btn-success {
+    margin: 10px;
+    float: right;
+}

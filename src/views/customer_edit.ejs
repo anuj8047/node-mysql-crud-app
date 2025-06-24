@@ -5,7 +5,7 @@
         <div class="col-md-5">
             <div class="card">
                 <div class="card-body">
-                    <form action="/update/<%= data.id %>" method="post">
+                    <form action="/update/<%= data.id %>" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <input type="text" name="name" value="<%= data.name %>" class="form-control" >
                         </div>
@@ -15,6 +15,23 @@
                         <div class="form-group">
                             <input type="text" name="phone" value="<%= data.phone %>" class="form-control" >
                         </div>
+
+                        <div class="form-group">
+                            <label>Current Image:</label><br>
+                            <% if (data.image) { %>
+                                <img src="/images/<%= data.image %>" width="120">
+                            <% } else { %>
+                                No image
+                            <% } %>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Upload New Image:</label>
+                            <input type="file" name="image" class="form-control">
+                            <!-- Keep old image value -->
+                            <input type="hidden" name="old_image" value="<%= data.image %>">
+                        </div>
+
                         <button type="submit" class="btn btn-primary">
                             Update Customer
                         </button>
